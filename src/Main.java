@@ -161,9 +161,9 @@ public class Main {
 
 
         //Sort Employees by Salary
-        List<String> salary = developers.stream()
+        List<Employee> salary = developers.stream()
                 .sorted(Comparator.comparing(Employee::getSalary).reversed())
-                .map(Employee::getName)
+//                .map(Employee::getName)
                 .collect(Collectors.toList());
 
         System.out.println("Salary: "+salary);

@@ -38,7 +38,17 @@ public class Employee {
 
     public Employee(){}
 
-    public Employee(String name, int id, String role,int salary) {
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "name='" + name + '\'' +
+                ", id=" + id +
+                ", role='" + role + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
+    public Employee(String name, int id, String role, int salary) {
         this.name = name;
         this.id = id;
         this.role = role;
