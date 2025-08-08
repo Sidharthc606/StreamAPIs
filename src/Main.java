@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
@@ -108,6 +111,62 @@ public class Main {
                 .count();
 
         System.out.println("No of names: "+noOfNames);
+
+
+        List<Integer> num=new ArrayList<>();
+        num.add(5);
+        num.add(4);
+        num.add(8);
+        num.add(3);
+
+        List<Integer> newList = num.stream()
+                .filter(n->n%2 == 0)
+                .collect(Collectors.toList());
+        System.out.println(newList);
+
+
+        Employee emp1=new Employee("Sidharth",9,"Software Developer",25000);
+        Employee emp2=new Employee("Jai",10,"BA",50000);
+        Employee emp3=new Employee("Arjun",11,"Fullstack",60000);
+        Employee emp4=new Employee("Sid",12,"Software Developer",80000);
+
+        List<Employee> developers = new ArrayList<>();
+
+        developers.add(emp1);
+        developers.add(emp2);
+        developers.add(emp3);
+        developers.add(emp4);
+
+        List<String> employee = developers.stream()
+                .filter(d-> d.getName().startsWith("S"))
+                .map(Employee::getName)
+                .collect(Collectors.toList());
+
+        System.out.println(employee);
+
+        //Count words starting with "A"
+        List<String> words = List.of("Apple","Avocado","banana","Ambience");
+         Long count = words.stream()
+                 .filter(w->w.startsWith("A"))
+                 .count();
+        System.out.println("No. of words starting with A: " + count);
+
+        //Remove Duplcates from a List
+        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,1);
+        List<Integer> unique = list.stream()
+                .distinct()
+                .collect(Collectors.toList());
+
+        System.out.println("Unique: "+unique);
+
+
+        //Sort Employees by Salary
+        List<String> salary = developers.stream()
+                .sorted(Comparator.comparing(Employee::getSalary).reversed())
+                .map(Employee::getName)
+                .collect(Collectors.toList());
+
+        System.out.println("Salary: "+salary);
 
     }
 }
